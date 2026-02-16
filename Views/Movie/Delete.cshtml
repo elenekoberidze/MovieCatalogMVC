@@ -1,0 +1,16 @@
+﻿@model Imdb_418.Models.Entities.Movie
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+<h2>Delete Movie</h2>
+
+<p>Title: @Model.Title</p>
+<p>Description: @Model.Description</p>
+<p>ReleaseDate: @Model.ReleaseDate</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit">Delete</button>
+    <a asp-action="Index">Cancel</a>
+</form>

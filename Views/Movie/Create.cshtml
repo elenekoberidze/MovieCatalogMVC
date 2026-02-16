@@ -1,0 +1,50 @@
+﻿@using Imdb_418.Models.Entities
+@model Imdb_418.Models.Entities.Movie
+@{
+    ViewData["Title"] = "Add Movie";
+}
+@using (Html.BeginForm("Create", "Movie", FormMethod.Post))
+{
+    <label>Title</label>
+    @Html.TextBoxFor(m => m.Title)
+
+    <br />
+    <label>Description</label>
+    @Html.TextBoxFor(m => m.Description)
+    <br />
+
+    <label>Release Date</label>
+    @Html.TextBoxFor(m => m.ReleaseDate, new { type = "date" })
+    <br />
+
+    <label>Choose a Genre:</label>
+    @Html.DropDownListFor(
+    m => m.Genre,
+        Html.GetEnumSelectList<Genre>(),
+        "Select"
+    )
+<br />
+<br />
+
+<button type="submit">Create</button>
+@Html.ActionLink("Cancel", "Index")
+}
+
+@* <form method="post" asp-action="Create">
+    <label>Title</label>
+    <input asp-for="Title" />
+
+    <label>Description</label>
+    <input asp-for="Description" />
+
+    <label>ReleaseDate</label>
+    <input asp-for="ReleaseDate" />
+
+    <label asp-for="Genre">Choose a Genre:</label>
+    <select asp-for="Genre" asp-items="Html.GetEnumSelectList<Genre>()">
+        <option value="">Select</option>
+    </select>
+
+    <button type="submit">create</button>
+    <a asp-action="Index">Cancel</a>
+</form> *@

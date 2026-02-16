@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Imdb_418.Models.Entities.Movie>
+@{
+    ViewData["Title"] = "Movie Page";
+}
+
+<div>
+    <h2>Movie Page</h2>
+    <a class="btn btn-secondary" asp-action="Create">Add Movie</a>
+</div>
+@if (!Model.Any())
+{
+    <p>No movies found</p>
+}
+@if (Model.Any())
+{
+    <table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>ReleaseDate</th>
+        <th>Genre</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Description</td>
+            <td>@item.ReleaseDate</td>
+            <td>@item.Genre</td>
+            <td>
+                <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">
+                    Edit
+                </a>
+                <a asp-action="Delete" asp-route-id="@item.Id">
+                    Delete
+                </a>
+            </td>
+            </tr>
+    }
+    </table>
+}
